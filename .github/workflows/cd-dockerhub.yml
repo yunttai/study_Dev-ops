@@ -66,9 +66,9 @@ jobs:
 
       - name: Pull & restart on VM
         run: |
-          ssh -i ~/.ssh/id_rsa ${{ secrets.GCP_USER }}@${{ secrets.GCP_HOST }} \
-            set -euo pipefail; \
+          ssh -i ~/.ssh/id_rsa ${{ secrets.GCP_USER }}@${{ secrets.GCP_HOST }} "\
+            set -euo pipefail && \
             cd ${REMOTE_APP_DIR} && \
             export DOCKERHUB_USERNAME=${DOCKERHUB_USERNAME} && \
-            docker compose -f docker-compose.yml -f docker-compose.prod.yml pull && \
-            docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --remove-orphans
+            docker compose -f docker-compose.yml -f docker-compose-prod.yml pull && \
+            docker compose -f docker-compose.yml -f docker-compose-prod.yml up -d --remove-orphans"
