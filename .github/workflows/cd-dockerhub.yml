@@ -30,8 +30,8 @@ jobs:
           context: .
           push: true
           tags:
-            ${{ secrets.DOCKERHUB_USERNAME }}/myflask:latest,
-            ${{ secrets.DOCKERHUB_USERNAME }}/myflask:${{ github.sha }}
+            - ${{ secrets.DOCKERHUB_USERNAME }}/myflask:latest
+            - ${{ secrets.DOCKERHUB_USERNAME }}/myflask:${{ github.sha }}
 
       # 4) 뒷정리(선택)
       - name: Log out from Docker Hub
@@ -71,4 +71,4 @@ jobs:
             cd ${REMOTE_APP_DIR} && \
             export DOCKERHUB_USERNAME=${DOCKERHUB_USERNAME} && \
             docker compose -f docker-compose.yml -f docker-compose-prod.yml pull && \
-            docker compose -f docker-compose.yml -f docker-compose-prod.yml up -d --remove-orphans"
+            docker compose -f docker-compose.yml -f docker-compose-prod.yml up -d --force-recreate --remove-orphans"
