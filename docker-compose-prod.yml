@@ -3,7 +3,6 @@ version: '3.8'
 services:
   web:
     image: ${DOCKERHUB_USERNAME}/myflask:latest
-    build: null
     environment:
       - FLASK_ENV=production
     expose:
