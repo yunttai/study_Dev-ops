@@ -30,8 +30,7 @@ jobs:
           context: .
           push: true
           tags:
-            - ${{ secrets.DOCKERHUB_USERNAME }}/myflask:latest
-            - ${{ secrets.DOCKERHUB_USERNAME }}/myflask:${{ github.sha }}
+            - ${{ secrets.DOCKERHUB_USERNAME }}/myflask:latest, ${{ secrets.DOCKERHUB_USERNAME }}/myflask:${{ github.sha }}
 
       # 4) 뒷정리(선택)
       - name: Log out from Docker Hub
